@@ -8,5 +8,5 @@ for filename in os.listdir("/home/w/ml/sci.space.json"):
         data = json.load(data_file)
         token = data["sentences"][0]["tokens"]
         for i in range(token):
-            if obj[i]["word"] in s:
-                obj.pop(i)
+            if token[i]["word"] in s:
+                token.pop(i)
