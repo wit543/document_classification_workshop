@@ -54,7 +54,7 @@ for n in list_n:
     f.write("\n")
 f.close()
 IDF = np.log(N/np.array(list_values))
-print(IDF)
+print(IDF) 
 # or a list of the values
 # list_values = [ v for v in sorted_dic.values() ]
 
