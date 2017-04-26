@@ -6,6 +6,7 @@ stop_word =  ["a","about","above","after","again","against","all","am","an","and
 symbols = ["!","\"","#","$","%","&","'","(",")","*","+",",","-",".","/","\\",">","<",">>","<<","... ",":",";","{","}","[","]","\"\"","''","==","--","?","`","-","``",".",":","|","..."]
 dic_N = {}
 dic_n = []
+N = len(os.listdir("sci.space.json")) + len(os.listdir("sci.electronics.json"))
 for filename in os.listdir("sci.space.json"):
     with open("sci.space.json/"+filename) as data_file:
         data = json.load(data_file)
@@ -33,7 +34,7 @@ sorted_dic = sorted(dic_N.items(), key=operator.itemgetter(1))
 # A list of the keys of dictionary
 list_keys = [ k[0] for k in sorted_dic ]
 list_values = [ k[1] for k in sorted_dic ]
-# print(list_keys)
+print(list_values)
 list_n = []
 # print(dic_n[0])
 for doc in dic_n:
@@ -52,8 +53,8 @@ for n in list_n:
         f.write(str(c)+",")
     f.write("\n")
 f.close()
-log_n = np.log(np.array(list_n)/np.array(list_values))
-print(log_n)
+IDF = np.log(N/np.array(list_values))
+print(IDF)
 # or a list of the values
 # list_values = [ v for v in sorted_dic.values() ]
 
