@@ -74,16 +74,19 @@ for n in list_n:
 f.close()
 IDF = np.log(N/np.array(list_values))
 print(IDF)
-
+print(dic_n)
 a = [];
 for n in dic_n:
-    print(n)
+
     a_temp =[];
     base = 0;
-    for tf in n:
-        base +=np.log(tf[1]+1)*IDF
-    for tf in n:
-        a_temp(np.log(tf[1]+1)*IDF/np.sqrt())
+    for key, value in n.items():
+        base +=np.power(np.log(value+1)*IDF,2)
+    for key, value in n.items():
+        a_temp.append(np.log(value+1)*IDF/np.sqrt(base))
+
+    a.append(a_temp)
+print(a)
 
 
 # or a list of the values
