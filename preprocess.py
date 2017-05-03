@@ -82,12 +82,12 @@ print(LTC)
 ######################################################
 ##                   print to file                  ##
 ######################################################
-f = open('dic-lemma', 'w')
+f = open('dic', 'w')
 for key, value in words.items():
     f.write(key+"\n")
 f.close()
 
-f = open('LTC-lemma', 'w')
+f = open('LTC', 'w')
 f.write("key | value\n")
 for key, values in LTC.items():
     f.write(key+" ")
