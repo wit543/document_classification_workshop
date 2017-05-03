@@ -49,7 +49,7 @@ for filename in os.listdir("sci.electronics.json"):
             else:
                 words[key]=1
             corpus['space:'+filename]=corpus_temp
-
+print (corpus)
 ######################################################
 ##                   calculate IDF                  ##
 ######################################################
@@ -60,16 +60,22 @@ print(len(IDF))
 
 LTC = {}
 ######################################################
-##                   calculate LTC                  ##
-######################################################
-
+#                   calculate LTC                  ##
+#####################################################
+print(corpus    )
 for key, values in corpus.items():
     base = 0
     temp =[]
     for word, count in values.items():
         base += np.power(np.log(count+1)*np.log(N/values[word]),2)
-    for word, count in values.items():
-        temp.append(np.log(count+1)*IDF[word]/np.sqrt(base))
+    # for word, count in values.items():
+    #     temp.append(np.log(count+1)*IDF[word]/np.sqrt(base))
+    for key_in, values_in in words.items():
+        if key_in in values.keys():
+            temp.append(np.log(values[key_in]+1)*IDF[key_in]/np.sqrt(base))
+        else:
+            temp.append(0);
+
     LTC[key] = temp
 print(LTC)
 
@@ -86,10 +92,11 @@ f.write("key | value\n")
 for key, values in LTC.items():
     f.write(key+" ")
     for value in values:
-        print(value)
         f.write(str(value)+",")
     f.write("\n")
 f.close()
+
+
 # for filename in os.listdir("sci.electronics.json"):
 #     with open("sci.electronics.json/"+filename) as data_file:
 #         data = json.load(data_file)
@@ -102,7 +109,7 @@ f.close()
 #         #         token.pop(i)
 #         for word in words_stop_word_and_sysmbol_removed:
 #             if word["word"].lower() not in dic_N:
-#
+
 # # print(dic);
 # sorted_dic = sorted(dic_N.items(), key=operator.itemgetter(1))
 # # print(sorted_dic)
@@ -145,7 +152,7 @@ f.close()
 #     a.append(a_temp)
 # print(a)
 #
-#
+
 # # or a list of the values
 # # list_values = [ v for v in sorted_dic.values() ]
 #
