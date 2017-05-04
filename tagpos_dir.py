@@ -10,7 +10,7 @@ OUTPUT_POSTFIX='.json'
 
 def tagpos(input_file, output_file):
     for line in input_file:
-        r = requests.post('http://localhost:9000?properties={%22annotators%22%3A%22tokenize%2Cssplit%2Cpos%2Cparse%2Clemma%22%2C%22outputFormat%22%3A%22json%22}', data=line)
+        r = requests.post('http://localhost:9000?properties={%22annotators%22%3A%22tokenize%2Cssplit%2Cpos%2Clemma%22%2C%22outputFormat%22%3A%22json%22}', data=line)
         tags = r.text
         print(tags, file=output_file)
 
